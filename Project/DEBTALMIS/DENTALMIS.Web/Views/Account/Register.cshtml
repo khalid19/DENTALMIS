@@ -1,0 +1,58 @@
+﻿
+@using DENTALMIS.Web.Extension
+@model DENTALMIS.Web.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.Dialog.cshtml";
+}
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+ 
+    <div class="form_group ">
+        <div>
+            @Html.LabelFor(model => model.UserName)
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "text ui-widget-content ui-corner-all" } })
+        </div>
+        <div>
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+    </div>
+    <div class="form_group ">
+        <div>
+            @Html.LabelFor(model => model.Password)
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "text ui-widget-content ui-corner-all" } })
+        </div>
+        <div>
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+    </div>
+     <div class="form_group ">
+        <div>
+            @Html.LabelFor(model => model.ConfirmPassword)
+            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "text ui-widget-content ui-corner-all" } })
+        </div>
+        <div>
+            @Html.ValidationMessageFor(model => model.ConfirmPassword)
+        </div>
+    </div>
+
+       <div class="form_group ">
+           <div>
+               @Html.Label("User Type")
+               @Html.DropDownList("Name", null,new { @class = "text ui-widget-content ui-corner-all"})
+           </div>
+       
+    </div>
+
+    <div class="form_group">
+        <div style="float: right">
+            @Html.SaveButton()
+        </div>
+
+    </div>
+}
+
+
